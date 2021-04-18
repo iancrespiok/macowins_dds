@@ -2,6 +2,8 @@ package domain.ventas;
 import domain.prendas.Prenda;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,8 +13,14 @@ public class Venta {
     boolean facturada;
     List<Prenda> listaPrendas = new ArrayList<>();
 
-    void agregarPrenda(Prenda prenda){
-        listaPrendas.add(prenda);
+    public Venta(LocalDate dia, MedioPago medioPago, List<Prenda> listaPrendas) {
+        this.dia = dia;
+        this.medioPago = medioPago;
+        this.listaPrendas = listaPrendas;
+    }
+
+    void agregarPrendas(Prenda ... prendas){
+        Collections.addAll(this.listaPrendas,prendas);
     }
 
     int cantidadPrendas(){
